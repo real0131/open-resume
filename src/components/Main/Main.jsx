@@ -12,8 +12,10 @@ const style = theme => ({
    container: {
        width: '70%',
        margin: '0 auto',
-       [theme.breakpoints.down('480px')]: {
-           width: '100vw',
+       [theme.breakpoints.down(480)]: {
+           boxSizing: 'border-box',
+           width: '100%',
+           padding: '0 16px',
        },
    },
 });

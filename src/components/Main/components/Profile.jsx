@@ -5,8 +5,7 @@ import defaultProfileImage from './profile.png';
 const style = theme => ({
     root: {
         width: '100%',
-        padding: '0 16px',
-        margin: '16px 0',
+        padding: '16px 16px',
         display: 'flex',
         justifyContent: 'center',
     },

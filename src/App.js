@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from './components/common/Appbar';
 import Main from './components/Main/Main';
+import ToolBox from './components/ToolBox/ToolBox';
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="App">
           <AppBar />
           <Main />
+          <ToolBox />
       </div>
     );
   }

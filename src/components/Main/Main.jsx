@@ -10,12 +10,19 @@ const style = theme => ({
        height: '100vh',
    },
    container: {
+       boxSizing: 'border-box',
        width: '70%',
-       margin: '0 auto',
+       minHeight: '80vh',
+       margin: '10px auto',
+       backgroundColor: 'white',
+       padding: '0 16px',
+       boxShadow: '0 2px 2px 0 rgba(0, 0, 0, .14),\n' +
+       '0 1px 5px 0 rgba(0, 0, 0, .12),\n' +
+       '0 3px 1px -2px rgba(0, 0, 0, .2)',
        [theme.breakpoints.down(480)]: {
-           boxSizing: 'border-box',
            width: '100%',
-           padding: '0 16px',
+           margin: '0',
+           minHeight: '100vh',
        },
    },
 });

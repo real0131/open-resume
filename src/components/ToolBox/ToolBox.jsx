@@ -20,7 +20,8 @@ const style = theme => ({
         height: '64px',
         borderRadius: '10px',
         margin: '0 auto',
-        backgroundColor: 'white',
+        backgroundColor: '#323232',
+        color: '#adadad',
         boxShadow: '0 8px 10px 1px rgba(0, 0, 0, .14),\n' +
         '0 3px 14px 2px rgba(0, 0, 0, .12),\n' +
         '0 5px 5px -3px rgba(0, 0, 0, .4)',

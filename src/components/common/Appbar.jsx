@@ -30,4 +30,4 @@ class Appbar extends React.Component {
     }
 }
 
-export default withStyles(style)(Appbar) ;
+export default withStyles(style)(Appbar);

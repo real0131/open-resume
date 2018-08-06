@@ -1,5 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Input from '../../common/Input';
+import Textarea from '../../common/Textarea';
 
 const style = theme => ({
     toc: {
@@ -14,14 +16,36 @@ const style = theme => ({
 });
 
 class InfoBox extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editState: true,
+        };
+    }
     render() {
         const { classes } = this.props;
-        return(
-            <sector>
-                <h2 className={classes.toc}>이것은 제목</h2>
-                <div className={classes.content}>이것은 내용</div>
-            </sector>
-        )
+        const { editState } = this.state;
+
+        if(editState){
+            return(
+                <sector>
+                    <h2 className={classes.toc}>
+                        <Input placeholder="제목"/>
+                    </h2>
+                    <div className={classes.content}>
+                        <Textarea placeholder="내용"/>
+                    </div>
+                </sector>
+            )
+        } else {
+            return(
+                <sector>
+                    <h2 className={classes.toc}>이것은 제목</h2>
+                    <div className={classes.content}>이것은 내용</div>
+                </sector>
+            )
+        }
     }
 }
 

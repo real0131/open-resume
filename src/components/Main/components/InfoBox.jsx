@@ -24,8 +24,7 @@ class InfoBox extends React.Component {
         };
     }
     render() {
-        const { classes } = this.props;
-        const { editState } = this.state;
+        const { classes, editState } = this.props;
 
         if(editState){
             return(

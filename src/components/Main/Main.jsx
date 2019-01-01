@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 import Profile from './components/Profile';
 import InfoBox from './components/InfoBox';
@@ -28,17 +29,32 @@ const style = theme => ({
 });
 
 class Main extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            editState: false
+        }
+    }
+
     render() {
         const { classes } = this.props;
+
+        const editState = (!!this.props.editState) ? this.props.editState : this.state.editState;
+
         return(
             <div className={classes.root}>
                 <div className={classes.container}>
-                    <Profile />
-                    <InfoBox />
+                    <Profile editState={editState}/>
+                    <InfoBox editState={editState} />
                 </div>
             </div>
         )
     }
 }
 
-export default withStyles(style)(Main);
+const stateMapper = state => ({
+    editState: state.config.editState,
+});
+
+export default connect(stateMapper)(withStyles(style)(Main));

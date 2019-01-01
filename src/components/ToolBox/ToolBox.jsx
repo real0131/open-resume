@@ -1,5 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+
+import {configToggleEditState} from "../../actions/config";
+
 import CreateIcon from '@material-ui/icons/Create';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
@@ -60,12 +64,16 @@ class ToolBox extends React.Component {
 
     }
 
+    changeEditState = () => {
+        this.props.configToggleEditState();
+    };
+
    render() {
        const { classes } = this.props;
        return(
            <div className={classes.root}>
                <div className={classes.toolbar}>
-                   <div className={classes.iconWrapper} title="편집모드, 뷰어모드 변환">
+                   <div className={classes.iconWrapper} title="편집모드, 뷰어모드 변환" onClick={this.changeEditState}>
                        <CreateIcon className={classes.icon}/>
                    </div>
                    <div className={classes.iconWrapper} title="저장하기">
@@ -83,4 +91,11 @@ class ToolBox extends React.Component {
    }
 }
 
-export default withStyles(style)(ToolBox);
+const stateMapper = undefined;
+const dispatchMapper = dispatch => ({
+    configToggleEditState() {
+        dispatch(configToggleEditState());
+    },
+});
+
+export default connect(stateMapper, dispatchMapper)(withStyles(style)(ToolBox));

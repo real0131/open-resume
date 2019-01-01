@@ -29,6 +29,7 @@ const style = theme => ({
         backgroundColor: 'rgba(0,0,0,0.5)',
         color: 'white',
         cursor: 'pointer',
+        textAlign: 'center'
     },
     infoWrapper: {
         padding: '32px',
@@ -56,8 +57,8 @@ class Profile extends React.Component {
         // editState : 값 true || false, true일때는 편집모드false 일때 뷰어모드
     }
     render() {
-        const { classes } = this.props;
-        const { editState } = this.state;
+        const { classes, editState } = this.props;
+
         if (editState) {
             return(
                 <div className={classes.root}>

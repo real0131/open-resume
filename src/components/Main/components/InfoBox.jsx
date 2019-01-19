@@ -21,27 +21,30 @@ class InfoBox extends React.Component {
 
         this.state = {
             editState: true,
+            title: '',
+            content: '',
         };
     }
     render() {
         const { classes, editState } = this.props;
+        const { title, content } = this.state;
 
         if(editState){
             return(
                 <sector>
                     <h2 className={classes.toc}>
-                        <Input placeholder="제목"/>
+                        <Input value={title} placeholder="제목" onChange={(e) => this.setState({title: e.target.value})} />
                     </h2>
                     <div className={classes.content}>
-                        <Textarea placeholder="내용"/>
+                        <Textarea value={content} placeholder="내용" onChange={(e) => this.setState({content: e.target.value})} />
                     </div>
                 </sector>
             )
         } else {
             return(
                 <sector>
-                    <h2 className={classes.toc}>이것은 제목</h2>
-                    <div className={classes.content}>이것은 내용</div>
+                    <h2 className={classes.toc}>{title}</h2>
+                    <div className={classes.content}>{content}</div>
                 </sector>
             )
         }

@@ -38,16 +38,21 @@ class Main extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, list } = this.props;
 
         const editState = (!!this.props.editState) ? this.props.editState : this.state.editState;
 
         return(
             <div className={classes.root}>
-                <div className={classes.container}>
+                <div className={classes.container} id={'main'}>
                     <Profile editState={editState}/>
-                    <InfoBox editState={editState} />
+                    {
+                        list.map(item => (
+                            <InfoBox editState={editState}/>
+                        ))
+                    }
                 </div>
+                <iframe id="ifmcontentstoprint" style={{height: '0px', width: '0px', position: 'absolute'}}></iframe>
             </div>
         )
     }
@@ -55,6 +60,7 @@ class Main extends React.Component {
 
 const stateMapper = state => ({
     editState: state.config.editState,
+    list: state.info
 });
 
 export default connect(stateMapper)(withStyles(style)(Main));

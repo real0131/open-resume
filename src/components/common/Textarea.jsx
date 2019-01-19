@@ -8,6 +8,7 @@ const style = theme => ({
         fontSize: 'inherit',
         border: 'none',
         resize: 'none',
+        minHeight: '100px',
     },
 });
 
@@ -19,7 +20,7 @@ class Textarea extends React.Component {
     render() {
         const { placeholder, value, classes } = this.props;
         return(
-            <textarea className={classes.textarea} placeholder={placeholder} value={value} />
+            <textarea className={classes.textarea} placeholder={placeholder} value={value} {...this.props} />
         )
     }
 }

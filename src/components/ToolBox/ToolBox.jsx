@@ -1,13 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-
-import {configToggleEditState} from "../../actions/config";
-
 import CreateIcon from '@material-ui/icons/Create';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import { connect } from 'react-redux';
+
+import {configToggleEditState} from "../../actions/config";
+import { addNote } from "../../actions/info";
 
 const style = theme => ({
     root: {
@@ -68,6 +68,20 @@ class ToolBox extends React.Component {
         this.props.configToggleEditState();
     };
 
+    addNote = () => {
+        this.props.addNote();
+    };
+
+    onClickSave = () => {
+        const content = document.getElementById("main");
+        const pri = document.getElementById("ifmcontentstoprint").contentWindow;
+        pri.document.open();
+        pri.document.write(content.innerHTML);
+        pri.document.close();
+        pri.focus();
+        pri.print();
+    };
+
    render() {
        const { classes } = this.props;
        return(
@@ -76,10 +90,10 @@ class ToolBox extends React.Component {
                    <div className={classes.iconWrapper} title="편집모드, 뷰어모드 변환" onClick={this.changeEditState}>
                        <CreateIcon className={classes.icon}/>
                    </div>
-                   <div className={classes.iconWrapper} title="저장하기">
+                   <div className={classes.iconWrapper} title="저장하기" onClick={this.onClickSave}>
                        <ImportExportIcon className={classes.icon}/>
                    </div>
-                   <div className={classes.iconWrapper} title="항목추가">
+                   <div className={classes.iconWrapper} title="항목추가" onClick={this.addNote}>
                        <NoteAddIcon className={classes.icon}/>
                    </div>
                </div>
@@ -92,6 +106,9 @@ const stateMapper = undefined;
 const dispatchMapper = dispatch => ({
     configToggleEditState() {
         dispatch(configToggleEditState());
+    },
+    addNote() {
+        dispatch(addNote());
     },
 });
 

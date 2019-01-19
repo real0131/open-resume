@@ -53,11 +53,14 @@ class Profile extends React.Component {
 
         this.state = {
             editState: true,
+            name: '',
+            subname: ''
         }
         // editState : 값 true || false, true일때는 편집모드false 일때 뷰어모드
     }
     render() {
         const { classes, editState } = this.props;
+        const { name, subname } = this.state;
 
         if (editState) {
             return(
@@ -68,10 +71,10 @@ class Profile extends React.Component {
                     </div>
                     <div className={classes.infoWrapper}>
                         <div className={classes.infoName}>
-                            <Input placeholder="Name"/>
+                            <Input value={name} placeholder="Name" onChange={(e) => this.setState({name: e.target.value})}/>
                         </div>
                         <div className={classes.infoSubName}>
-                            <Input placeholder="Sub Name"/>
+                            <Input value={subname} placeholder="Sub Name" onChange={(e) => this.setState({subname: e.target.value})}/>
                         </div>
                     </div>
                 </div>
@@ -83,8 +86,8 @@ class Profile extends React.Component {
                         <img className={classes.profileImage} alt="profile" src={defaultProfileImage} />
                     </div>
                     <div className={classes.infoWrapper}>
-                        <div className={classes.infoName}>조재호</div>
-                        <div className={classes.infoSubName}>Jaeho Cho</div>
+                        <div className={classes.infoName}>{name}</div>
+                        <div className={classes.infoSubName}>{subname}</div>
                     </div>
                 </div>
             )

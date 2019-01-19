@@ -16,7 +16,7 @@ class Input extends React.Component {
     render() {
         const { placeholder, value, classes } = this.props;
         return(
-            <input className={classes.input} placeholder={placeholder} value={value} />
+            <input className={classes.input} placeholder={placeholder} value={value} {...this.props}/>
         )
     }
 }

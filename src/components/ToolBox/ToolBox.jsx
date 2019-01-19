@@ -79,9 +79,6 @@ class ToolBox extends React.Component {
                    <div className={classes.iconWrapper} title="저장하기">
                        <ImportExportIcon className={classes.icon}/>
                    </div>
-                   <div className={classes.iconWrapper} title="사진추가">
-                       <AddPhotoAlternateIcon className={classes.icon}/>
-                   </div>
                    <div className={classes.iconWrapper} title="항목추가">
                        <NoteAddIcon className={classes.icon}/>
                    </div>
